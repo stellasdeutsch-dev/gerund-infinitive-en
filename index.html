@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Герундий vs инфинитив. -ing или to. Гайд от Shyngys</title>
+<meta name="description" content="Когда -ing, а когда to. Предлоги-триггеры, слова-боссы, ловушка Stop, Go + активность. Озвучка, анимации, тренажёр. Мобайл-фёрст.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#fbf5ee; --ink:#2a1608; --muted:#7a6553;
+  --line:rgba(42,22,8,.09); --line2:rgba(42,22,8,.16);
+  --brand:#e8871e; --brand2:#f5a623; --accent:#e0483b;
+  --dark:#24140a; --dark2:#331d0f; --dark-ink:#fbefe2; --dark-muted:#c2a488;
+  --shadow:0 18px 44px rgba(42,22,8,.15);
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:16px}
+img,svg{max-width:100%;display:block}a{color:inherit}
+h1,h2,h3{font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.08}p{margin:0}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--brand),var(--accent));z-index:200;width:0%}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 18px;height:50px;background:rgba(255,255,255,.8);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid var(--line);transition:.3s}
+.nav.dark{background:rgba(36,20,10,.72);border-bottom-color:rgba(255,255,255,.1);color:#fff}
+.nav .logo{font-weight:800;font-size:13px;display:flex;align-items:center;gap:7px}
+.nav .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--brand);animation:pulse 2s infinite}
+.nav .menu{list-style:none;display:none;gap:20px;margin:0;padding:0}
+.nav .menu a{font-size:12.5px;opacity:.75;text-decoration:none;transition:.2s}.nav .menu a:hover{opacity:1}
+@media(min-width:820px){.nav{height:54px;padding:0 40px}.nav .menu{display:flex}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:96px 20px 50px;position:relative;overflow:hidden;background:radial-gradient(900px 500px at 50% -5%,#fdeccf 0%,transparent 60%),var(--bg)}
+.blob{position:absolute;border-radius:50%;filter:blur(55px);opacity:.55;pointer-events:none;z-index:0}
+.b1{width:280px;height:280px;background:linear-gradient(135deg,#ffca7a,#ff9a5a);top:-70px;left:-60px;animation:f1 15s ease-in-out infinite}
+.b2{width:240px;height:240px;background:linear-gradient(135deg,#ff9d8a,#e0483b);bottom:-80px;right:-50px;animation:f2 17s ease-in-out infinite}
+@keyframes f1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,40px) scale(1.12)}}
+@keyframes f2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,-30px) scale(1.15)}}
+.eyebrow{font-size:12px;font-weight:700;color:var(--brand);letter-spacing:.09em;text-transform:uppercase;margin-bottom:16px;z-index:1;opacity:0;animation:fadeUp .8s var(--ease) .1s forwards}
+.hero h1{font-size:clamp(34px,10vw,80px);max-width:1000px;z-index:1;letter-spacing:-.03em}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line span{display:block;transform:translateY(110%);animation:reveal .9s var(--ease) forwards}
+.hero h1 .line:nth-child(1) span{animation-delay:.15s}.hero h1 .line:nth-child(2) span{animation-delay:.32s}
+.accent{background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes reveal{to{transform:translateY(0)}}
+.hero .sub{margin-top:22px;font-size:clamp(16px,4.6vw,20px);color:var(--muted);max-width:620px;z-index:1;opacity:0;animation:fadeUp .8s var(--ease) .5s forwards}
+.hero .cta{margin-top:34px;display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:100px;background:var(--ink);color:#fff;font-size:15px;font-weight:600;text-decoration:none;z-index:1;opacity:0;animation:fadeUp .8s var(--ease) .7s forwards;transition:transform .3s var(--ease)}
+.hero .cta:active{transform:scale(.96)}.hero .cta svg{animation:bd 1.6s infinite}
+@keyframes bd{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hv-wrap{margin-top:44px;width:100%;max-width:560px;z-index:1;padding:0 6px}
+.hv{width:100%;height:auto;border-radius:20px;background:linear-gradient(180deg,#fffdfa,#fbf3e9);box-shadow:var(--shadow);padding:8px}
+section{padding:74px 20px;position:relative}
+@media(min-width:820px){section{padding:110px 20px}}
+.wrap{max-width:960px;margin:0 auto}
+.kicker{font-size:12px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+.h2{font-size:clamp(26px,7vw,48px);max-width:720px}
+.lead{font-size:clamp(16px,4.4vw,19px);color:var(--muted);max-width:660px;margin-top:16px}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease),transform .8s var(--ease)}.reveal.in{opacity:1;transform:translateY(0)}
+.story{background:var(--bg2);border-radius:24px;padding:26px 22px;margin-top:32px;font-size:clamp(16px,4.4vw,19px);line-height:1.7;position:relative}
+@media(min-width:820px){.story{padding:40px}}
+.story .qm{font-size:56px;color:var(--line2);font-family:Georgia,serif;line-height:0;position:absolute;top:26px;left:20px}
+.story p{margin-top:14px}.story p:first-of-type{margin-top:0}.story b{color:var(--brand)}
+.speak{width:30px;height:30px;border-radius:50%;background:#fff;box-shadow:0 2px 8px rgba(42,22,8,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.2s;color:var(--brand)}
+.speak:active{transform:scale(.9)}.speak.playing{background:var(--brand);color:#fff;animation:sp .6s infinite}.speak svg{width:13px;height:13px}
+@keyframes sp{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+/* rule blocks */
+.rule{margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+@media(min-width:820px){.rule:hover{transform:translateY(-4px);box-shadow:var(--shadow)}}
+.rule .tag{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));padding:5px 12px;border-radius:100px;letter-spacing:.03em}
+.rule h3{font-size:clamp(19px,5.2vw,25px);margin-top:12px}
+.rule .desc{color:var(--muted);font-size:15px;margin-top:10px}
+.exline{display:flex;align-items:center;gap:10px;margin-top:12px;padding:12px 14px;border-radius:14px;background:var(--bg2)}
+.exline.bad{background:#fdecea}
+.exline .en{font-weight:600;font-size:15px;flex:1}
+.exline .en .ru{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:3px}
+.exline .en .x{color:#c62828}.exline .en .ok{color:#1b7a5a}
+.ing{color:var(--brand);font-weight:800}.to{color:var(--accent);font-weight:800}
+/* boss verbs chips */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{background:var(--bg2);border:1px solid var(--line);border-radius:100px;padding:10px 16px;font-weight:700;font-size:14px;display:flex;align-items:center;gap:8px;transition:.2s}
+.chip:active{transform:scale(.95)}
+.chip .sm{font-weight:400;color:var(--muted);font-size:12px}
+/* dark stop trap */
+.dark-section{background:var(--dark);color:var(--dark-ink)}
+.dark-section .kicker{color:var(--brand2)}.dark-section .lead{color:var(--dark-muted)}
+.split{margin-top:32px;display:grid;grid-template-columns:1fr;gap:14px}
+@media(min-width:720px){.split{grid-template-columns:1fr 1fr}}
+.sp{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:22px}
+.sp h4{font-size:15px;margin-bottom:6px}
+.sp h4 .ing{color:var(--brand2)}.sp h4 .to{color:#ff8a76}
+.sp .big{font-size:clamp(17px,4.8vw,20px);font-weight:700;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sp .note{color:var(--dark-muted);font-size:14px;margin-top:8px}
+.sp .speak{background:rgba(255,255,255,.08);color:#fff}.sp .speak.playing{background:var(--brand2)}
+/* interactive builder */
+.builder{margin-top:36px;background:#fff;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.builder .q{font-size:clamp(17px,4.8vw,21px);font-weight:700;line-height:1.4}
+.builder .blank{display:inline-block;min-width:74px;border-bottom:3px dashed var(--line2);text-align:center;font-weight:800;color:var(--muted);padding:0 6px}
+.builder .blank.filled{border-bottom-style:solid;border-color:var(--brand)}
+.builder .picks{display:flex;gap:12px;margin-top:20px}
+.builder .pick{flex:1;padding:16px;border-radius:16px;border:2px solid var(--line2);font-weight:800;font-size:16px;transition:.2s;background:#fff}
+.builder .pick:active{transform:scale(.97)}
+.builder .pick.ing{color:var(--brand)}.builder .pick.to{color:var(--accent)}
+.builder .fb{margin-top:18px;font-size:15px;color:var(--muted);min-height:44px;padding:14px 16px;border-radius:14px;background:var(--bg2);opacity:0;transition:.3s}
+.builder .fb.show{opacity:1}
+.builder .fb.good{background:#eaf7ef;color:#1b7a5a}
+.builder .fb.bad{background:#fdecea;color:#c62828}
+.builder .next{margin-top:16px;width:100%;padding:14px;border-radius:14px;background:var(--ink);color:#fff;font-weight:700;font-size:15px;opacity:0;pointer-events:none;transition:.3s}
+.builder .next.show{opacity:1;pointer-events:auto}
+.builder .counter{margin-top:14px;font-size:13px;color:var(--muted);text-align:center}
+.faq-item{border-top:1px solid var(--line);padding:20px 0}.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;font-size:17px;font-weight:700}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .pl{font-size:22px;font-weight:300;transition:transform .3s var(--ease);flex-shrink:0}
+.faq-item[open] summary .pl{transform:rotate(45deg)}
+.faq-item .answer{color:var(--muted);margin-top:12px;font-size:15px;max-width:720px}.faq-item .answer i{color:var(--ink)}
+.closing{text-align:center;background:linear-gradient(160deg,#24140a,#4a2c15);color:#fff;border-radius:28px;padding:56px 24px;margin:0 16px}
+@media(min-width:820px){.closing{padding:90px 30px;margin:0 20px}}
+.closing h2{font-size:clamp(25px,6.5vw,42px);max-width:680px;margin:0 auto}
+.closing p{color:var(--dark-muted);margin-top:18px;font-size:16px;max-width:560px;margin-left:auto;margin-right:auto}
+.closing .sig{margin-top:30px;font-size:13px;color:var(--brand2);font-weight:700;letter-spacing:.04em}
+footer{padding:40px 20px 60px;text-align:center;color:var(--muted);font-size:12.5px}footer a{color:var(--brand);text-decoration:none}
+.more{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.more a{font-size:12px;padding:8px 14px;border-radius:100px;background:var(--bg2);text-decoration:none;font-weight:600;transition:.2s}.more a:active{transform:scale(.95)}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<nav class="nav" id="nav">
+  <div class="logo"><span class="dot"></span> Герундий</div>
+  <ul class="menu">
+    <li><a href="#idea">Суть</a></li>
+    <li><a href="#prep">Предлоги</a></li>
+    <li><a href="#boss">Слова-боссы</a></li>
+    <li><a href="#stop">Ловушка Stop</a></li>
+    <li><a href="#build">Тренажёр</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="eyebrow">Грамматика по-шыныгысовски · 03</div>
+  <h1>
+    <span class="line"><span>-ing или to?</span></span>
+    <span class="line"><span>Решает <span class="accent">соседнее слово</span></span></span>
+  </h1>
+  <p class="sub">В школе меня пугали словом «герундий». Звучит как римский полководец, проигравший все битвы. На деле это способ перестать звучать как турист.</p>
+  <a href="#idea" class="cta">Погнали
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </a>
+  <div class="hv-wrap">
+    <svg class="hv" viewBox="0 0 540 200" xmlns="http://www.w3.org/2000/svg">
+      <rect x="40" y="80" width="150" height="52" rx="12" fill="#fff" stroke="#e8871e" stroke-width="3"/>
+      <text x="115" y="112" font-size="18" fill="#2a1608" font-family="Inter,sans-serif" font-weight="800" text-anchor="middle">enjoy</text>
+      <rect x="350" y="80" width="150" height="52" rx="12" fill="#fdf0e0" stroke="#f5a623" stroke-width="3"/>
+      <text x="425" y="112" font-size="18" fill="#e8871e" font-family="Inter,sans-serif" font-weight="800" text-anchor="middle">work<tspan fill="#e8871e">ing</tspan></text>
+      <path id="link" d="M195,106 L345,106" stroke="#e8871e" stroke-width="3" stroke-dasharray="150" stroke-dashoffset="150">
+        <animate attributeName="stroke-dashoffset" from="150" to="0" dur="1.2s" begin="0.6s" fill="freeze"/>
+      </path>
+      <g opacity="0"><animate attributeName="opacity" from="0" to="1" dur=".5s" begin="1.7s" fill="freeze"/>
+        <circle cx="270" cy="106" r="18" fill="#e8871e"/>
+        <text x="270" y="112" font-size="15" fill="#fff" font-family="Inter,sans-serif" font-weight="800" text-anchor="middle">ing</text>
+      </g>
+      <text x="270" y="165" font-size="13" fill="#7a6553" font-family="Inter,sans-serif" font-weight="600" text-anchor="middle">босс требует процесс, а не to</text>
+    </svg>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="wrap reveal">
+    <div class="kicker">Суть</div>
+    <h2 class="h2">Новички лозунгами, профи через процесс</h2>
+    <p class="lead">Новичок говорит: I like to swim. I want to read. Уровень «Лондон из зе кэпитал». Профи говорит через процесс, и это звучит плавно и дорого.</p>
+    <div class="story">
+      <span class="qm">“</span>
+      <p>Смотри разницу. <b>I enjoy swimming.</b> <b>I prefer reading.</b> Слышишь, как гладко? Герундий это глагол, надевший костюм существительного. Он про сам процесс, а не про голое намерение.</p>
+      <p>Дальше три правила, где выбор между -ing и to не на удачу, а по закону.</p>
+    </div>
+  </div>
+</section>
+
+<section id="prep" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <div class="kicker">Правило 1</div>
+    <h2 class="h2">Предлог это триггер</h2>
+    <p class="lead">Запомни раз и навсегда. Если перед глаголом стоит предлог (in, on, at, of, for, about, without), ты обязан включить герундий. Инфинитив тут запрещён.</p>
+    <div class="rule">
+      <span class="tag">видишь предлог → лепи -ING</span>
+      <h3>Не думай, просто ставь -ing</h3>
+      <div class="exline bad"><div class="en"><span class="x">Thank you for help me. ✗</span><span class="ru">Режет слух.</span></div></div>
+      <div class="exline bad"><div class="en"><span class="x">Thank you for to help me. ✗</span><span class="ru">Кровь из ушей.</span></div></div>
+      <div class="exline"><div class="en">Thank you for <span class="ing">helping</span> me.<span class="ru"><span class="ok">Вот так правильно.</span></span></div><button class="speak" data-say="Thank you for helping me."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">I am good at <span class="ing">selling</span>.<span class="ru">Я хорош в продажах.</span></div><button class="speak" data-say="I am good at selling."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">He left without <span class="ing">saying</span> goodbye.<span class="ru">Ушёл по-английски, не попрощавшись.</span></div><button class="speak" data-say="He left without saying goodbye."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<section id="boss">
+  <div class="wrap reveal">
+    <div class="kicker">Правило 2</div>
+    <h2 class="h2">Слова-боссы не терпят частицу to</h2>
+    <p class="lead">Есть глаголы, которые не выносят рядом конкурента с to. Они требуют подчинения, требуют процесса. Поставишь их с инфинитивом, зазвучишь неграмотно.</p>
+    <div class="chips">
+      <div class="chip">enjoy <span class="sm">наслаждаться</span></div>
+      <div class="chip">suggest <span class="sm">предлагать</span></div>
+      <div class="chip">avoid <span class="sm">избегать</span></div>
+      <div class="chip">consider <span class="sm">рассматривать</span></div>
+      <div class="chip">finish <span class="sm">заканчивать</span></div>
+    </div>
+    <div class="rule" style="margin-top:24px">
+      <span class="tag">босс + глагол → всегда -ING</span>
+      <h3>Топ-5, которые нужны в жизни и в бизнесе</h3>
+      <div class="exline"><div class="en">I <span class="ing">enjoy working</span> here.<span class="ru">Не enjoy to work. Никогда.</span></div><button class="speak" data-say="I enjoy working here."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">I <span class="ing">suggest meeting</span> tomorrow.<span class="ru">Предлагаю встретиться завтра.</span></div><button class="speak" data-say="I suggest meeting tomorrow."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">He <span class="ing">avoids answering</span> questions.<span class="ru">Он уходит от ответов.</span></div><button class="speak" data-say="He avoids answering questions."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">Have you <span class="ing">considered hiring</span> an assistant?<span class="ru">Ты думал нанять ассистента?</span></div><button class="speak" data-say="Have you considered hiring an assistant?"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+      <div class="exline"><div class="en">Stop talking and <span class="ing">finish eating</span>.<span class="ru">Хватит болтать, доедай.</span></div><button class="speak" data-say="Stop talking and finish eating."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<section id="stop" class="dark-section">
+  <div class="wrap reveal">
+    <div class="kicker">Правило 3 · Ловушка Stop</div>
+    <h2 class="h2">Здесь ошибаются 99% людей</h2>
+    <p class="lead">Глагол Stop работает и с герундием, и с инфинитивом. Но смысл противоположный. Окончание меняет всю твою биографию.</p>
+    <div class="split">
+      <div class="sp">
+        <h4>Stop + <span class="ing">ING</span> · бросить привычку</h4>
+        <div class="big">I stopped <span class="ing">smoking</span>.
+          <button class="speak" data-say="I stopped smoking."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+        <div class="note">Я бросил курить. Я молодец, я за ЗОЖ. Действие прекращено насовсем.</div>
+      </div>
+      <div class="sp">
+        <h4>Stop + <span class="to">TO</span> · остановиться, чтобы начать</h4>
+        <div class="big">I stopped <span class="to">to smoke</span>.
+          <button class="speak" data-say="I stopped to smoke."><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 2 4 6H1v4h3l4 4zM11 5a3 3 0 010 6"/></svg></button></div>
+        <div class="note">Шёл по улице, остановился, достал сигарету и закурил. Я снова начал. Полная противоположность.</div>
+      </div>
+    </div>
+    <div class="story" style="margin-top:32px;background:rgba(255,255,255,.05);color:var(--dark-ink)">
+      <p style="color:var(--dark-ink)">Бонус, Правило 4. <b style="color:var(--brand2)">Go + активность.</b> Идёшь заниматься спортом или хобби, забудь про to. Тебе не нужно направление, нужен процесс.</p>
+      <p style="color:var(--dark-muted)">Go <span class="ing">shopping</span>. Go <span class="ing">swimming</span>. Go <span class="ing">fishing</span>. А не to shop.</p>
+    </div>
+  </div>
+</section>
+
+<section id="build">
+  <div class="wrap reveal">
+    <div class="kicker">Тренажёр</div>
+    <h2 class="h2">Собери фразу правильно</h2>
+    <p class="lead">Ткни -ing или to. Приложение объяснит, почему именно так, и даст следующую.</p>
+    <div class="builder" id="builder"></div>
+  </div>
+</section>
+
+<section id="faq" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <div class="kicker">Вопросы</div>
+    <h2 class="h2">Коротко о том, что ещё спрашивают</h2>
+    <div style="margin-top:28px">
+      <details class="faq-item" open>
+        <summary>А как же «I want to», «I need to»? Это же to.<span class="pl">+</span></summary>
+        <div class="answer">Верно. Часть глаголов, наоборот, всегда с инфинитивом: <i>want, need, decide, hope, plan, promise, agree.</i> Это не противоречие, просто другой список боссов, которые любят to. Мир делится на «любителей -ing» и «любителей to».</div>
+      </details>
+      <details class="faq-item">
+        <summary>Есть глаголы, которым всё равно?<span class="pl">+</span></summary>
+        <div class="answer">Да. <i>like, love, hate, start, begin, continue</i> спокойно живут с обоими, смысл почти не меняется. <i>I like swimming</i> и <i>I like to swim</i> оба нормальны. Расслабься на них.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Remember и forget тоже меняют смысл, как stop?<span class="pl">+</span></summary>
+        <div class="answer">Именно. <i>I remembered to lock the door</i> (не забыл сделать) vs <i>I remember locking the door</i> (помню, что делал). То же с forget. Логика та же, что у stop: to смотрит вперёд, -ing назад.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Как не зубрить эти списки?<span class="pl">+</span></summary>
+        <div class="answer">Лови ощущение. Герундий это про сам процесс, картинку в моменте. Инфинитив это про цель, шаг в будущее. Плюс правило предлога железное: увидел предлог, ставь -ing без раздумий.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="closing reveal">
+    <h2>-ing это процесс. to это цель. Остальное детали.</h2>
+    <p>Увидел предлог, ставь -ing. Увидел слово-босс, вспомни его список. Увидел stop, реши: бросил или притормозил ради нового. И турист в тебе замолкает.</p>
+    <div class="sig">Гайд от Shyngys</div>
+  </div>
+  <div class="more">
+    <a href="../prepositions-of-movement/">Предлоги движения</a>
+    <a href="../present-perfect-en/">Present Perfect</a>
+    <a href="../future-tenses-en/">Будущее время</a>
+    <a href="../articles-en/">Артикли</a>
+    <a href="../stative-verbs-en/">Stative verbs</a>
+  </div>
+</section>
+
+<footer>Гайд по английскому в стиле Shyngys · Озвучка через Web Speech API · <a href="https://github.com/stellasdeutsch-dev" target="_blank" rel="noopener">GitHub</a></footer>
+
+<script>
+function speak(t,btn){if(!('speechSynthesis'in window)){return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.95;if(btn){btn.classList.add('playing');u.onend=()=>btn.classList.remove('playing');u.onerror=()=>btn.classList.remove('playing')}speechSynthesis.speak(u)}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)speak(b.getAttribute('data-say'),b)});
+const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const nav=document.getElementById('nav');
+new IntersectionObserver(es=>es.forEach(en=>nav.classList.toggle('dark',en.isIntersecting)),{rootMargin:'-50px 0px -80% 0px'}).observe(document.getElementById('stop'));
+const pr=document.getElementById('progress');addEventListener('scroll',()=>{const h=document.documentElement;pr.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'},{passive:true});
+// builder
+const TASKS=[
+  {pre:'Thank you for',verb:'help',ans:'ing',why:'После предлога for только герундий: helping.'},
+  {pre:'I suggest',verb:'meet',ans:'ing',why:'suggest это слово-босс, требует -ing: meeting.'},
+  {pre:'I decided',verb:'leave',ans:'to',why:'decide любит инфинитив: to leave.'},
+  {pre:'He avoids',verb:'answer',ans:'ing',why:'avoid всегда с -ing: answering.'},
+  {pre:'They went',verb:'shop',ans:'ing',why:'go + активность это -ing: shopping.'},
+  {pre:'I want',verb:'sleep',ans:'to',why:'want это босс инфинитива: to sleep.'},
+];
+let ti=0,tscore=0;const bld=document.getElementById('builder');
+function make(){
+  const t=TASKS[ti];
+  const ing=t.verb.endsWith('e')&&t.verb!=='be'?t.verb.slice(0,-1)+'ing':(t.verb==='shop'?'shopping':t.verb+'ing');
+  bld.innerHTML=`<div class="q">${t.pre} <span class="blank" id="bk">____</span> ...</div>
+    <div class="picks"><button class="pick ing" data-p="ing">-ing</button><button class="pick to" data-p="to">to</button></div>
+    <div class="fb" id="fb"></div><button class="next" id="nx">Дальше →</button>
+    <div class="counter">Фраза ${ti+1} из ${TASKS.length} · верно: ${tscore}</div>`;
+  const fb=bld.querySelector('#fb'),bk=bld.querySelector('#bk'),nx=bld.querySelector('#nx');
+  bld.querySelectorAll('.pick').forEach(p=>p.onclick=()=>{
+    if(bld.dataset.done)return;bld.dataset.done=1;
+    const good=p.dataset.p===t.ans;
+    bk.classList.add('filled');
+    bk.textContent=t.ans==='ing'?ing:'to '+t.verb;
+    bk.style.color=good?'#1b7a5a':'#e8871e';
+    fb.textContent=(good?'Верно. ':'Мимо. ')+t.why;
+    fb.classList.add('show',good?'good':'bad');
+    if(good)tscore++;
+    nx.classList.add('show');
+  });
+  nx.onclick=()=>{delete bld.dataset.done;ti++;if(ti<TASKS.length)make();else{bld.innerHTML=`<div class="q">Готово. ${tscore} из ${TASKS.length}.</div><div class="fb show ${tscore>=5?'good':'bad'}" style="opacity:1">${tscore>=5?'Чувство -ing/to у тебя есть. Огонь.':'Прокрути к правилам и вернись, дожмём.'}</div><button class="next show" onclick="ti=0;tscore=0;make()">Заново</button>`}};
+}
+make();
+</script>
+</body>
+</html>
